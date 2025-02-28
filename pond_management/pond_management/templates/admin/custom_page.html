@@ -1,0 +1,80 @@
+{% extends "unfold/layouts/base.html" %}
+
+{% load admin_urls i18n unfold %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+{% endblock %}
+
+{% block breadcrumbs %}{% if not is_popup %}
+    <div class="px-4 lg:px-8">
+        <div class="container mb-6 mx-auto -my-3 lg:mb-12">
+            <ul class="flex flex-wrap">
+                {% url 'admin:index' as link %}
+                {% trans 'Home' as name %}
+                {% include 'unfold/helpers/breadcrumb_item.html' with link=link name=name %}
+
+                {% url 'admin:lakes_pond_changelist' as link %}
+                {% trans 'Ponds' as name %}
+                {% include 'unfold/helpers/breadcrumb_item.html' with link=link name=name %}
+
+                {% trans 'Custom page' as name %}
+                {% include 'unfold/helpers/breadcrumb_item.html' with name=name %}
+            </ul>
+        </div>
+    </div>
+{% endif %}{% endblock %}
+
+{% block content %}
+    <!-- {% tab_list "ponds" %} -->
+    <div id="map" style="height: 500px;"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([0, 0], 2);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var pondsGeoJson = {{ ponds_geojson|safe }};
+            var pondFishData = {{ PondFish_data|safe }};
+            console.log(pondsGeoJson);  // Print the GeoJSON data to the console
+            console.log(pondFishData);  // Print the PondFish data to the console
+
+            function onEachFeature(feature, layer) {
+                var pondName = feature.properties.name;
+                var relatedData = pondFishData.filter(function(item) {
+                    return item.pond__name === pondName;
+                });
+
+                var popupContent = `
+                    <div style="font-weight: bold; margin-bottom: 8px;">${pondName}</div>
+                    <div style="display: grid; grid-template-columns: auto auto auto; gap: 8px; font-size: 14px;">
+                        <div style="color: #666;">{% trans 'Species' %}</div>
+                        <div style="color: #666;">{% trans 'Kind' %}</div>
+                        <div style="color: #666;">{% trans 'Quantity' %}</div>
+                `;
+
+                relatedData.forEach(function(item) {
+                    popupContent += `
+                        <div>${item.Fish__species__species}</div>
+                        <div>${item.Fish__kind}</div>
+                        <div style="text-align: right;">${item.total_quantity}</div>
+                    `;
+                });
+
+                popupContent += '</div>';
+                layer.bindPopup(popupContent);
+            }
+
+            var geoJsonLayer = L.geoJSON(pondsGeoJson, {
+                onEachFeature: onEachFeature
+            }).addTo(map);
+
+            map.fitBounds(geoJsonLayer.getBounds());  // Fit the map view to the bounds of the GeoJSON data
+        });
+    </script>
+{% endblock %}

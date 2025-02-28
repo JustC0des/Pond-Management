@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8001:8000"
+    volumes:
+      - ../pond_management:/usr/src/app
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+      - DEBUG=1
+      - DJANGO_SUPERUSER_PASSWORD=admin
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py makemigrations pond_management &&
+             python manage.py migrate &&
+             python manage.py createsuperuser --noinput --username admin --email admin@admin.com &&
+             python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgis/postgis:latest
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"

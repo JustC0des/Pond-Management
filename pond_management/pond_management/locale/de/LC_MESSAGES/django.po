@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-28 08:18+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pond_management/pond_management/models.py:8
+msgid "Name"
+msgstr "Name"
+
+#: pond_management/pond_management/models.py:9
+msgid "Location"
+msgstr "Ort"
+
+#: pond_management/pond_management/models.py:17
+#: pond_management/pond_management/models.py:71
+msgid "Pond"
+msgstr "Teich"
+
+#: pond_management/pond_management/models.py:18
+#: pond_management/pond_management/settings.py:211
+#: pond_management/pond_management/settings.py:236
+#: pond_management/pond_management/templates/admin/custom_page.html:19
+msgid "Ponds"
+msgstr "Teiche"
+
+#: pond_management/pond_management/models.py:26
+#: pond_management/pond_management/models.py:48
+#: pond_management/pond_management/templates/admin/custom_page.html:56
+msgid "Species"
+msgstr "Art"
+
+#: pond_management/pond_management/models.py:35
+#: pond_management/pond_management/models.py:36
+msgid "Fish species"
+msgstr "Fischart"
+
+#: pond_management/pond_management/models.py:45
+#: pond_management/pond_management/templates/admin/custom_page.html:57
+msgid "Kind"
+msgstr "Bez."
+
+#: pond_management/pond_management/models.py:46
+msgid "The kind of a fish (such as K1, K2)"
+msgstr "Die Bezeichnung eines Fisches (z.B. K1 oder K2)"
+
+#: pond_management/pond_management/models.py:49
+msgid "Length Range"
+msgstr "Länge"
+
+#: pond_management/pond_management/models.py:50
+msgid "Price"
+msgstr "Preis"
+
+#: pond_management/pond_management/models.py:58
+#: pond_management/pond_management/models.py:72
+msgid "Fish"
+msgstr "Fisch"
+
+#: pond_management/pond_management/models.py:59
+#: pond_management/pond_management/settings.py:221
+msgid "Fishes"
+msgstr "Fische"
+
+#: pond_management/pond_management/models.py:73
+#: pond_management/pond_management/templates/admin/custom_page.html:58
+msgid "Quantity"
+msgstr "Anzahl"
+
+#: pond_management/pond_management/models.py:81
+msgid "Pond Fish"
+msgstr "TeichFisch"
+
+#: pond_management/pond_management/models.py:82
+msgid "Pond Fishes"
+msgstr "TeichFische"
+
+#: pond_management/pond_management/settings.py:164
+msgid "English"
+msgstr "Englisch"
+
+#: pond_management/pond_management/settings.py:165
+msgid "German"
+msgstr "Deutsch"
+
+#: pond_management/pond_management/settings.py:175
+#: pond_management/pond_management/settings.py:176
+msgid "Pond Management"
+msgstr "Fischmanagement"
+
+#: pond_management/pond_management/settings.py:177
+msgid "Manage your ponds and fishes"
+msgstr "Verwalte deine Teiche und Fische"
+
+#: pond_management/pond_management/settings.py:206
+msgid "Fish Stock"
+msgstr "Fisch anzahl"
+
+#: pond_management/pond_management/settings.py:216
+msgid "Fish Species"
+msgstr "Fischart"
+
+#: pond_management/pond_management/settings.py:233
+msgid "Navigation"
+msgstr "Navigation"
+
+#: pond_management/pond_management/settings.py:241
+msgid "Map"
+msgstr "Karte"
+
+#: pond_management/pond_management/templates/admin/custom_page.html:15
+msgid "Home"
+msgstr "Home"
+
+#: pond_management/pond_management/templates/admin/custom_page.html:22
+msgid "Custom page"
+msgstr "Benutzerdefiniert"
